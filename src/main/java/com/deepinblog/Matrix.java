@@ -3,6 +3,7 @@ package com.deepinblog;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by louisyuu on 2021/7/9 10:19 上午
@@ -54,10 +55,26 @@ public class Matrix {
     }
 
 
+    static int cnt = 0;
+    static int n = 10000;
+
     public static void main(String[] args) {
+        for(int i = 0; i < n; ++i){
+            boolean[] p = new boolean[365];
+            for(int j = 0; j < 365; ++j) p[j] = false;
 
-        spiralOrder(matrix);
-
+            for(int k = 0; k < 50; ++k){
+                Random r = new Random();
+                int x = r.nextInt(365);
+                if(p[x]) {
+                    cnt++;
+                    break;
+                }
+                else p[x] = true;
+            }
+        }
+        System.out.println(cnt * 1.0 /n);
     }
+
 
 }
